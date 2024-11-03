@@ -4,6 +4,7 @@ const speed = 100
 var current_dir = "none"
 
 func _ready():
+	# Default animation when it loads
 	$AnimatedSprite2D.play("front_idle")
 
 func _physics_process(delta: float) -> void:

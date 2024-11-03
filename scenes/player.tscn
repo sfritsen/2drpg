@@ -246,7 +246,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fdtws")
 }],
 "loop": true,
-"name": &"back_ide",
+"name": &"back_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -420,4 +420,4 @@ script = ExtResource("1_g4abs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w8w0d")
-animation = &"death"
+animation = &"back_idle"
