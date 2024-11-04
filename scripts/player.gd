@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true
+var health = 100
+var player_alive = true
+
 const speed = 100
 var current_dir = "none"
 
@@ -9,6 +14,13 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
+	enemy_attack()
+	
+	if health <= 0:
+		player_alive = false # add death or respawn screen here
+		health = 0
+		print("Player is freakin dead")
+		self.queue_free()
 	
 func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -66,3 +78,31 @@ func play_anim(movement):
 			anim.play("back_walk")
 		elif movement == 0:
 			anim.play("back_idle")
+
+# This is a method used by other scripts to see if its an player
+func player():
+	pass
+
+# When something enters player hitbox
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = true
+
+# When something leaves players hitbox
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+func enemy_attack():
+	# If is in attack range and cooldown is true
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		# Take hit and remove health
+		health = health - 20
+		# Set cooldown to false
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(health)
+
+
+func _on_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true
