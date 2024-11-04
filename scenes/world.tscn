@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://8p7n6oqlo14k"]
+[gd_scene load_steps=16 format=4 uid="uid://8p7n6oqlo14k"]
 
 [ext_resource type="Texture2D" uid="uid://fmspjgwfcdx0" path="res://art/tilesets/plains.png" id="1_rtht7"]
 [ext_resource type="Texture2D" uid="uid://dpqgd20q8mg24" path="res://art/tilesets/grass.png" id="2_i8uie"]
 [ext_resource type="Texture2D" uid="uid://cc8ebi2nd2tvi" path="res://art/tilesets/fences.png" id="3_akel6"]
 [ext_resource type="Texture2D" uid="uid://b3hv8vbpah50a" path="res://art/objects/objects.png" id="4_6kj5p"]
 [ext_resource type="PackedScene" uid="uid://c183lieddnrke" path="res://scenes/player.tscn" id="5_o4vx5"]
+[ext_resource type="PackedScene" uid="uid://d0vwdk6e7261b" path="res://scenes/enemy.tscn" id="6_aa4ib"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rqg6"]
 texture = ExtResource("1_rtht7")
@@ -380,3 +381,6 @@ tile_set = SubResource("TileSet_fkson")
 
 [node name="player" parent="." instance=ExtResource("5_o4vx5")]
 position = Vector2(17, 57)
+
+[node name="enemy" parent="." instance=ExtResource("6_aa4ib")]
+position = Vector2(240, 109)
